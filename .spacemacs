@@ -39,27 +39,52 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
-     ;; auto-completion
-     ;; better-defaults
-     emacs-lisp
-     ;; git
-     ;; markdown
-     multiple-cursors
-     treemacs
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
      (spacemacs-editing :packages
-                         avy)
+                        avy)
      spacemacs-layouts
      (spacemacs-modeline :packages
                          spaceline)
      spacemacs-org
+     spacemacs-project
+     spacemacs-evil
+     spacemacs-navigation
+     spacemacs-purpose
+     (spacemacs-editing-visual :packages
+                               highlight-parentheses
+                               whiteroom)
+     helm
+     ;; auto-completion
+     ;; better-defaults
+     emacs-lisp
+     (git :packages
+          magit
+          transient
+          evil-magit
+          git-timemachine
+          )
+     (python :packages
+             counsel-gtags
+             helm-cscope
+             anaconda-mode
+             py-isort
+             pytest
+             :variables
+             python-test-runner 'pytest
+             )
+     ;; markdown
+     multiple-cursors
+     treemacs
+     (org :packages
+          company
+          evil-org
+          htmlize
+          )
+     ;; (shell :variables
+     ;;        shell-default-height 30
+     ;;        shell-default-position 'bottom)
+     ;; spell-checking
+     syntax-checking
+     ;; version-control
      )
 
    ;; List of additional packages that will be installed without being
@@ -69,7 +94,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(hc-zenburn-theme)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -192,8 +217,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(hc-zenburn
+                         adwaita)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -475,10 +500,37 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-quickhelp-color-background "#4F4F4F")
+ '(company-quickhelp-color-foreground "#DCDCCC")
+ '(custom-safe-themes
+   (quote
+    ("04232a0bfc50eac64c12471607090ecac9d7fd2d79e388f8543d1c5439ed81f5" default)))
  '(evil-want-Y-yank-to-eol nil)
+ '(hl-todo-keyword-faces
+   (quote
+    (("TODO" . "#dc752f")
+     ("NEXT" . "#dc752f")
+     ("THEM" . "#2d9574")
+     ("PROG" . "#4f97d7")
+     ("OKAY" . "#4f97d7")
+     ("DONT" . "#f2241f")
+     ("FAIL" . "#f2241f")
+     ("DONE" . "#86dc2f")
+     ("NOTE" . "#b1951d")
+     ("KLUDGE" . "#b1951d")
+     ("HACK" . "#b1951d")
+     ("TEMP" . "#b1951d")
+     ("FIXME" . "#dc752f")
+     ("XXX" . "#dc752f")
+     ("XXXX" . "#dc752f")
+     ("???" . "#dc752f"))))
+ '(nrepl-message-colors
+   (quote
+    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (toc-org org-bullets org-plus-contrib spaceline powerline persp-mode eyebrowse treemacs-projectile treemacs-evil treemacs ht pfuture ace-window overseer f dash s nameless macrostep helm-xref helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx flx helm-descbinds helm-ag evil-mc elisp-slime-nav auto-compile packed ace-jump-helm-line helm avy helm-core popup which-key use-package pcre2el hydra evil goto-chg undo-tree dotenv-mode diminish bind-map bind-key async))))
+    (pytest py-isort anaconda-mode pythonic helm-purpose window-purpose imenu-list smeargle magit-svn magit-gitflow magit-popup highlight-parentheses helm-gitignore request helm-git-grep gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-pos-tip pos-tip flycheck evil-magit magit transient git-commit with-editor winum restart-emacs paradox spinner open-junk-file golden-ratio centered-cursor-mode auto-highlight-symbol ace-link htmlize evil-org zenburn-theme vi-tilde-fringe evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state iedit evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens smartparens paredit evil-args evil-anzu anzu counsel-projectile counsel swiper ivy hc-zenburn-theme toc-org org-bullets org-plus-contrib spaceline powerline persp-mode eyebrowse treemacs-projectile treemacs-evil treemacs ht pfuture ace-window overseer f dash s nameless macrostep helm-xref helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx flx helm-descbinds helm-ag evil-mc elisp-slime-nav auto-compile packed ace-jump-helm-line helm avy helm-core popup which-key use-package pcre2el hydra evil goto-chg undo-tree dotenv-mode diminish bind-map bind-key async)))
+ '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
